@@ -13,7 +13,6 @@ import CoreNFC
 
 #if SKIP
 // Cannot use typealias NSObject = java.lang.Object because it breaks the bridge generation
-//public typealias AVObjectBase = NSObject
 public protocol NFCAdapterBase { }
 #else
 public typealias NFCAdapterBase = NSObject
@@ -219,7 +218,7 @@ public final class NDEFRecord {
         case NdefRecord.TNF_UNCHANGED: return .unchanged
         case NdefRecord.TNF_UNKNOWN: return .unknown
         case NdefRecord.TNF_WELL_KNOWN: return .nfcWellKnown
-        //case NdefRecord.TNF_MIME_MEDIA:
+        case NdefRecord.TNF_MIME_MEDIA: return .media
         default: return .unknown
         }
         #elseif canImport(CoreNFC)
