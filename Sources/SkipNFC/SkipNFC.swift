@@ -11,8 +11,16 @@ import android.nfc.tech.__
 import CoreNFC
 #endif
 
+#if SKIP
+// Cannot use typealias NSObject = java.lang.Object because it breaks the bridge generation
+//public typealias AVObjectBase = NSObject
+public protocol NFCAdapterBase { }
+#else
+public typealias NFCAdapterBase = NSObject
+#endif
+
 /// An NFCAdapter that wraps `CoreNFC.NFCNDEFReaderSession` on iOS and `android.nfc.NfcAdapter` on Android.
-public final class NFCAdapter: NSObject {
+public final class NFCAdapter: NFCAdapterBase {
     private var messageHandler: ((NDEFMessage) -> ())?
     #if SKIP
     private var nfcAdapter: NfcAdapter?
