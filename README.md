@@ -1,8 +1,29 @@
 # SkipNFC
 
-This is a free [Skip](https://skip.tools) Swift/Kotlin library project containing the following modules:
+This package provides rudimentary support for Android and iOS NFC interaction
+for [Skip](https://skip.tools) apps.
 
-SkipNFC
+## Usage
+
+```swift
+let nfcAdapter: NFCAdapter = NFCAdapter()
+nfcAdapter.startScanning { message in
+    print("received message: \(message)")
+}
+nfcAdapter.stopScanning()
+```
+
+## Setup
+
+### Android
+
+* Add [android.permission.NFC](https://developer.android.com/reference/android/Manifest.permission.html#NFC) to your `AndroidManifest.xml`.
+
+### iOS
+
+* Add [Near Field Communication Tag Reader Session Formats Entitlements](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_nfc_readersession_formats) to your entitlements.
+* Add [NFCReaderUsageDescription](https://developer.apple.com/documentation/bundleresources/information_property_list/nfcreaderusagedescription) to your `Darwin/Info.plist`.
+* Add [com.apple.developer.nfc.readersession.iso7816.select-identifiers](https://developer.apple.com/documentation/bundleresources/information_property_list/select-identifiers) to your `Darwin/Info.plist` as needed.
 
 ## Building
 
