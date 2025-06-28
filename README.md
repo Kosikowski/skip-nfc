@@ -25,6 +25,18 @@ nfcAdapter.stopScanning()
 * Add [NFCReaderUsageDescription](https://developer.apple.com/documentation/bundleresources/information_property_list/nfcreaderusagedescription) to your `Darwin/Info.plist`.
 * Add [com.apple.developer.nfc.readersession.iso7816.select-identifiers](https://developer.apple.com/documentation/bundleresources/information_property_list/select-identifiers) to your `Darwin/Info.plist` as needed.
 
+For example:
+
+```xml
+<key>com.apple.developer.nfc.readersession.formats</key>
+<array>
+    <string>NDEF</string>
+</array>
+<key>NSNFCReaderUsageDescription</key>
+<string>This app requires access to NFC to read and write data to NFC tags.</string>
+```
+
+
 ## Building
 
 This project is a free Swift Package Manager module that uses the
